@@ -1,0 +1,1 @@
+.search-bar{height:100rpx;background-color:#ff2d4a;width:100%;display:flex;justify-content:center;align-items:center;padding:20rpx 16rpx;box-sizing:border-box;position:relative}.search-bar icon{position:absolute;z-index:998;left:50%;transform:translateX(-170%)}.search-bar input{width:100%;background-color:#fff;height:60rpx;text-align:center;font-size:24rpx;border-radius:10rpx}

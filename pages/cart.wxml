@@ -1,0 +1,71 @@
+
+  <!-- 没有商品 -->
+  <view class="empty-cart" hidden="{{isFull}}">
+    <text class="iconfont icon-gouwuche"/> 暂时还没有商品哦~~~~
+  </view>
+  <!-- 有商品 -->
+  <view class="full-cart" hidden="{{!isFull}}">
+    <!-- 收货人地址 -->
+    <view bindtap="getAddr" class="address">
+      <view class="userInfo">
+        <view class="left">收货人：{{address.userName}}</view>
+        <view class="right">{{address.telNumber}}<text class="iconfont icon-jiantouyou"/></view>
+      </view>
+      <view class="userAddr">收货地址：{{address.provinceName}}{{address.cityName}}{{address.cuontName}}{{address.detailInfo}}</view>
+      <image src="../image/border.PNG"/>
+    </view>
+    <!-- 商品列表 -->
+    <view class="cartList">
+      <view class="title">
+        <text class="iconfont icon-dianpu">优购生活馆</text>
+      </view>
+      <view class="content">
+        <block  wx:for="{{cartInfo}}" wx:key="">
+          <view class="item">
+            <view class="left">
+              <radio bindtap="change" checked="{{item.isChecked}}" data-wpychange-a="{{index}}"/>
+            </view>
+            <view class="right">
+              <image src="{{item.goods_small_logo}}"/>
+              <view class="detail-box">
+                <view class="title">{{item.goods_name}}</view>
+                <view class="price-num">
+                  <view class="price">￥<text>{{item.goods_price}}.00</text></view>
+                  <view class="num">
+                    <view class="sub" bindtap="subClick" data-wpysubclick-a="{{item.goods_id}}">-</view>
+                    <text>{{cartKey[item.goods_id]}}</text>
+                    <view class="add" bindtap="addClick" data-wpyaddclick-a="{{item.goods_id}}">+</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- 底部总金额 -->
+    <view class="bottom">
+      <view class="radios">
+        <radio color="#f10215" bindtap="allChecked" checked="{{isAllchecked}}"/>全选
+      </view>
+      <view class="total">
+        <view class="sum">合计：<text class="icon">￥</text><text class="number">{{totalPrice}}</text><text class="zero">.00</text></view>
+        <view class="postage">包含运费</view>
+      </view>
+      <view bindtap="buyMoney" class="go-account">结算({{checkedNum}})</view>
+    </view>
+  </view>
+  
+    <view class="wetoast {{$toast$reveal ? 'wetoast_show' : ''}}">
+        <view class="wetoast__mask"/>
+        <view class="wetoast__bd" animation="{{$toast$animationData}}">
+            <block  wx:if="{{$toast$img}}">
+                <view class="wetoast__bd__img {{$toast$imgClassName || ''}}">
+                    <image class="wetoast__bd__img_desc" src="{{$toast$img}}" mode="{{$toast$imgMode || 'scaleToFill'}}"/>
+                </view>
+            </block>
+            <block  wx:if="{{$toast$title}}">
+                <view class="wetoast__bd__title {{$toast$titleClassName || ''}}">{{$toast$title}}</view>
+            </block>
+        </view>
+    </view>

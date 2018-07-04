@@ -1,0 +1,55 @@
+
+  
+   <!--搜索区域-->
+  <view class="search-bar">
+    <icon type="search" size="22"/>
+    <input bindtap="$searchBar$toSearch" type="text" placeholder="搜索"/>
+  </view>
+
+  <!--轮播图区域-->
+<swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
+  <block  wx:for="{{swiperData}}" wx:key="">
+    <swiper-item>
+        <navigator class="nav" url="{{item.navigator_url}}" open-type="navigate" hover-class="none">
+          <image src="{{item.image_src}}" class="slide-image" width="355" height="150"/>
+        </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+  <!--分类区域-->
+  <view class="nav">
+    <block  wx:for="{{navData}}" wx:key="">
+       <navigator url="{{item.navigator_url}}" open-type="navigate" hover-class="none">
+           <image src="{{item.image_src}}"/>
+       </navigator> 
+    </block>
+  </view>
+    <!--精选时装区域-->
+    <view class="items">  
+       <block  wx:for="{{products}}" wx:key="">
+           <view class="products">
+              <view class="title">
+               <image src="{{item.floor_title.image_src}}"/>
+              </view>
+               <view class="product clearfix">
+                   <block wx:for="{{item.product_list}}" wx:key="" wx:for-index="i" wx:for-item="myitem">
+                      <navigator class="wx:if={{i==0?'fl':'fr'}}" url="{{myitem.navigator_url}}" open-type="navigate" hover-class="none">
+                        <image src="{{myitem.image_src}}"/>
+                        <view class="mask">{{mask}}</view>
+                      </navigator> 
+                   </block>
+               </view>       
+            </view>
+     </block>
+    </view>
+    <!-- 底部区域 -->
+   <view class="footer">
+     <!-- 测试用的 -->
+       <navigator url="" open-type="navigate" hover-class="none">商品详情列表
+       </navigator>
+         <text class="iconfont icon-xiao"/>
+         <text>我是有底线</text>
+   </view>
+  <view catchtap="returnTop" class="cricle" hidden="{{isHidden}}">
+    <text class="iconfont icon-jiantoushang"/>顶部
+  </view>

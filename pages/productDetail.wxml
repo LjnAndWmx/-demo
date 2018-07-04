@@ -1,0 +1,56 @@
+<!--轮播图区域-->
+  <swiper bindtap="previewImage" class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
+    <block  wx:for="{{swiperData}}" wx:key="">
+      <swiper-item>
+        <navigator class="nav" url="{{}}" open-type="navigate" hover-class="none">
+          <image src="{{item.pics_mid_url}}" class="slide-image"/>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 商品基本信息 -->
+  <view class="product-top">
+    <view class="price">
+      <text>￥{{detailData.goods_price}}</text>
+    </view>
+    <view class="dec">
+      <text class="title">{{detailData.goods_name}}</text>
+      <view class="shoucang">
+        <text>💗</text><text>收藏</text></view>
+    </view>
+    <view class="other">快递：免运费</view>
+  </view>
+  <!-- tab区域 -->
+  <view class="product-content">
+    <view class="tabBar">
+      <view bindtap="selectItem" class="item {{selectIndex==0?'active':''}}" data-wpyselectitem-a="{{0}}">图文介绍</view>
+      <view bindtap="selectItem" class="item {{selectIndex==1?'active':''}}" data-wpyselectitem-a="{{1}}">规则参数</view>
+    </view>
+    <view class="tab-content">
+      <view class="item" hidden="{{selectIndex!=0}}">
+        <import src="../wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+      <view class="item" hidden="{{selectIndex!=1}}">
+        <block  wx:for="{{detailData.attrs}}" wx:key="">
+          <view class="row">
+            <view class="col">{{item.attr_name}}</view>
+            <view class="col">{{item.attr_value}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 底部区域 -->
+  <view class="bottom">
+    <view class="server">
+      <text class="iconfont icon-kefu"/>
+      <text class="txt">联系客服</text>
+    </view>
+    <view bindtap="toCart" class="cart">
+      <text class="iconfont icon-gouwuche"/>
+      <text class="txt">购物车</text>
+    </view>
+    <view bindtap="addCart" class="addCart">加入购物车</view>
+    <view class="buy">立即购买</view>
+  </view>

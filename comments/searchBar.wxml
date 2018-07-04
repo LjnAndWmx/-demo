@@ -1,0 +1,6 @@
+
+   <!--搜索区域-->
+  <view class="search-bar">
+    <icon type="search" size="22"/>
+    <input bindtap="toSearch" type="text" placeholder="搜索"/>
+  </view>

@@ -1,0 +1,6 @@
+
+    <view class="nav-bar">
+        <block  wx:for="{{tabList}}" wx:key="">
+            <view class="item {{selectIndex==index?'active':''}}" bindtap="selectItem" data-wpyselectitem-a="{{index}}">{{item}}</view>
+        </block>
+    </view>

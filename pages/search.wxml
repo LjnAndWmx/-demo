@@ -1,0 +1,41 @@
+
+   <!-- 顶部区域 -->
+  <view class="searchList">
+      <icon type="search" size="20"/>
+      <input bindinput="inputValue" value="{{inputValue}}" type="search" placeholder="请输入你想要的商品" maxlength="140"/>
+      <button hidden="{{isHidden}}" bindtap="search">搜索</button>
+  </view>
+  <!-- 搜索历史 -->
+  <view class="history-box" hidden="{{status}}">
+    <view class="title-box">
+      <view class="title">历史搜索</view>
+      <view class="tip" bindtap="clear">X</view>
+    </view>
+    <view class="history-box">
+      <block  wx:for="{{historyData}}" wx:key="">
+         <view bindtap="insertValue" class="item" data-wpyinsertvalue-a="{{item}}">{{item}}</view>
+      </block>
+    </view>
+  </view>
+
+   <!-- 搜索详细列表 -->
+   <view class="search-list" hidden="{{!status}}">
+      <view class="tab-box">
+        <view bindtap="selectOption" class="item {{selectOptionIndex==0?'active':''}}" data-wpyselectoption-a="0">综合</view>
+        <view bindtap="selectOption" class="item {{selectOptionIndex==1?'active':''}} iconfont {{numSort==true?'icon-jiantoushang':'icon-jiantouxia'}}" data-wpyselectoption-a="1">销量</view>
+        <view bindtap="selectOption" class="item {{selectOptionIndex==2?'active':''}}  iconfont {{priceSort==true?'icon-jiantoushang':'icon-jiantouxia'}}" data-wpyselectoption-a="2">价格</view>
+      </view>
+      <view class="list-box">
+         <block  wx:for="{{searchDataList}}" wx:key="">
+           <view class="item" bindtap="toProductDetail" data-wpytoproductdetail-a="{{item.goods_id}}">
+             <view class="left">
+                <image src="{{item.goods_small_logo}}"/>
+             </view>
+             <view class="right">
+               <text class="title">{{item.goods_name}}</text>
+               <text class="price">￥<text>{{item.goods_price}}</text>.00</text>
+             </view>
+           </view>
+         </block>
+      </view>
+   </view>
