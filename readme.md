@@ -1,11 +1,11 @@
-品优购API文档
+## 品优购API文档
 注意：
 开发环境的域名为：暂无
 生产环境的域名为：https://www.zhengzhicheng.cn/ 
 说明：
 	在所有的url中，凡是带有my的，服务器都是需要验证token的
-一、首页
-1.1 、获取轮播图
+## 一、首页
+## 1.1 、获取轮播图
 地址	api/public/v1/home/swiperdata
 应用场景	
 作用描述	获取首页轮播图
@@ -17,7 +17,7 @@
 open_type:导航方式，支持navigate
 navigator_url:导航地址 
 
-1.2 、获取分类列表
+## 1.2 、获取分类列表
 
 地址	api/public/v1/home/catitems
 应用场景	
@@ -31,7 +31,7 @@ img_src:分类图标地址
 open_type:打开方式
 navigator_url:导航URL地址
 
-1.3 、获取楼层数据
+## 1.3 、获取楼层数据
 地址	api/public/v1/home/floordata
 应用场景	
 作用描述	首页获取楼层数据
@@ -47,8 +47,8 @@ product_list[0].image_width:二级楼层图片宽度
 product_list[0].open_type:二级楼层导航方式
 product_list[0].navigator_url:二级楼层导航url地址
 
-二、商品详情
-2.1 、获取商品详情数据
+## 二、商品详情
+## 2.1 、获取商品详情数据
 地址	api/public/v1/goods/detail?goods_id=140
 应用场景	
 作用描述	根据商品id获取该商品的详细信息
@@ -63,8 +63,8 @@ goods_introduce:商品介绍
 pics:轮播图
 attrs:商品属性
 
-三、分类
-3.1 、查询分类数据
+## 三、分类
+## 3.1 、查询分类数据
 
 地址	api/public/v1/categories
 应用场景	
@@ -80,8 +80,8 @@ cat_icon：分类图片
 
 
 
-四、购物车
-4.1 、获取购物车中需要展示的商品内容
+## 四、购物车
+## 4.1 、获取购物车中需要展示的商品内容
 地址	api/public/v1/goods/goodslist?goods_ids=140,395
 应用场景	
 作用描述	根据商品ids，获取购物车中需要展示的商品列表 
@@ -94,8 +94,8 @@ goods_name:商品名称
 goods_price:商品价格
 goods_small_logo:商品图标
 
-五、订单
-5.1 、下单之前先登录
+## 五、订单
+## 5.1 、下单之前先登录
 地址	api/public/v1/users/wxlogin
 应用场景	
 作用描述	根据商品id获取商品详细信息
@@ -110,7 +110,7 @@ signature 使用 sha1得到字符串  通过 getUserInfo 获取
 服务器返回参数说明	user_id:用户id
 token:登录成功后，后台给你返回的令牌 
 
-5.2 、下单操作
+## 5.2 、下单操作
 地址	api/public/v1/my/orders/create
 应用场景	创建订单
 作用描述	登录之后，创建订单
@@ -130,7 +130,7 @@ order_price:订单价格
 consignee_addr:收货地址
 goods:下单时，购买商品的数组
 
-5.3 、查询订单支付状态
+## 5.3 、查询订单支付状态
 地址	api/public/v1/my/orders/chkOrder
 应用场景	
 作用描述	获取某笔订单的支付状态
@@ -144,7 +144,7 @@ goods:下单时，购买商品的数组
 服务器返回参数说明	message:支付状态消息
 
 
-5.4 、查询订单列表
+## 5.4 、查询订单列表
 地址	api/public/v1/my/orders/all?type=1
 应用场景	
 作用描述	查询订单
@@ -164,8 +164,8 @@ orders[0].goods:下单时，购买商品的数组
 orders[0].total_count:订单总件数
 orders[0].total_price:订单总金额
 
-六、支付
-6.1 、生成预支付交易单
+## 六、支付
+## 6.1 、生成预支付交易单
 地址	api/public/v1/my/orders/req_unifiedorder
 应用场景	
 作用描述	生成预支付交易单
